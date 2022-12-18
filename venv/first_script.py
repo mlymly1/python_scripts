@@ -2,6 +2,8 @@ import math
 import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 
 
 def calc(x):
@@ -12,7 +14,6 @@ browser = webdriver.Chrome()
 link = "http://suninjuly.github.io/alert_accept.html"
 try:
     browser.get(link)
-
     time.sleep(1)
     browser.maximize_window()
     button = browser.find_element(By.CSS_SELECTOR, "button.btn")
@@ -33,9 +34,9 @@ try:
     russia_window = browser.window_handles[0]
     time.sleep(3)
     browser.switch_to.window(russia_window)
-    time.sleep(14)
     # Запускаем второй скрипт с кодировкой utf-8 для того чтобы значения аттрибутов на русском языке отображались
-    # exec(open('course_script.py', 'r', encoding='utf-8').read())
+    exec(open('course_script.py', 'r', encoding='utf-8').read())
+
 
 
 except Exception as error:
